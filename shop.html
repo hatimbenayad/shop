@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEasy - Grow Your Small Business Online</title>
+    <style>
+        
+        :root {
+            --primary-color: #4e73df;
+            --primary-dark: #3a56b0;
+            --secondary-color: #1cc88a;
+            --dark-color: #333;
+            --light-color: #f8f9fc;
+            --danger-color: #e74a3b;
+            --warning-color: #f6c23e;
+            --gray-color: #858796;
+            --light-gray: #eaecf4;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        
+        nav.main-nav {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav.main-nav ul {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav.main-nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav.main-nav ul li a {
+            color: white;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav.main-nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        
+        .page {
+            display: none;
+            min-height: calc(100vh - 60px);
+        }
+        
+      
+        .page.active {
+            display: block;
+        }
+
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #16a978;
+            text-decoration: none;
+            color: white;
+        }
+
+        
+        #home header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        #hero {
+            background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        #hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .cta-buttons a {
+            min-width: 150px;
+        }
+
+        #features {
+            padding: 4rem 0;
+        }
+
+        #features h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+        }
+
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        
+        #dashboard header {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        #welcome {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        #store-setup, #product-list, #analytics {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .setup-form-placeholder {
+            margin-top: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .input-placeholder {
+            height: 40px;
+            background-color: var(--light-gray);
+            border-radius: 5px;
+        }
+
+        .product-controls {
+            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+
+        .button-placeholder {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        table th {
+            background-color: var(--light-gray);
+            font-weight: 600;
+        }
+
+        .analytics-container {
+            margin-top: 1.5rem;
+        }
+
+        .chart-placeholder {
+            height: 300px;
+            background-color: var(--light-gray);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-placeholder {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stat-box {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .stat-box h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--gray-color);
+        }
+
+        .stat-box p {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        
+        #store-header {
+            background-color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        #store-branding h1 {
+            color: var(--dark-color);
+        }
+
+        #store-branding p {
+            color: var(--gray-color);
+        }
+
+        #store-header nav ul {
+            display: flex;
+        }
+
+        #store-header nav ul li {
+            margin-right: 1.5rem;
+        }
+
+        #store-header nav ul li a {
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        #store-cart {
+            background-color: var(--light-gray);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        #store main {
+            padding: 2rem 0;
+        }
+
+        #featured-products h2, #categories h2, #store-info h2 {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image-placeholder {
+            height: 200px;
+            background-color: var(--light-gray);
+        }
+
+        .product-card h3 {
+            padding: 1rem 1rem 0.5rem;
+        }
+
+        .price {
+            padding: 0 1rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .add-to-cart-button {
+            margin: 1rem;
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .category-list {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .category {
+            background-color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .category:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        #store-info {
+            background-color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        #home footer, #dashboard footer {
+            text-align: center;
+        }
+
+        #home footer nav ul {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        #home footer nav ul li {
+            margin: 0 1rem;
+        }
+
+        #home footer a, #dashboard footer a {
+            color: var(--light-gray);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--light-gray);
+            margin-bottom: 1rem;
+        }
+
+        .store-footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 2rem 2rem 0;
+        }
+
+        .store-footer-bottom a {
+            color: var(--secondary-color);
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav.main-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav.main-nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            #store-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #store-header nav {
+                margin: 1rem 0;
+            }
+
+            #store-cart {
+                margin-top: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons a {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 1rem;
+            }
+
+            .feature-cards, .stats-placeholder {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+#testimonials {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+#testimonials h2 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+.testimonial-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.testimonial {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.testimonial:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial p {
+    font-style: italic;
+    color: var(--gray-color);
+}
+
+.testimonial .author {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+
+#pricing {
+    padding: 4rem 0;
+    background-color: white;
+    border-radius: 10px;
+    margin: 2rem 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+#pricing h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+.pricing-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.plan {
+    background-color: var(--light-gray);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.plan:hover {
+    transform: translateY(-5px);
+}
+
+.plan h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.plan .price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.plan ul {
+    margin-bottom: 1.5rem;
+}
+
+.plan ul li {
+    margin-bottom: 0.5rem;
+    color: var(--gray-color);
+}
+
+.plan .btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.plan .btn:hover {
+    background-color: #16a978;
+}
+
+
+#order-management {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+#order-management h2 {
+    margin-bottom: 1.5rem;
+}
+
+#order-management table th,
+#order-management table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+#order-management table th {
+    background-color: var(--light-gray);
+    font-weight: 600;
+}
+
+#order-management table td {
+    color: var(--gray-color);
+}
+
+#order-management table td:last-child {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+
+#quick-actions {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+#quick-actions h2 {
+    margin-bottom: 1.5rem;
+}
+
+.actions-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.actions-container .btn {
+    min-width: 150px;
+}
+
+
+#store-search {
+    padding: 1.5rem 0;
+    text-align: center;
+}
+
+.search-input {
+    padding: 0.75rem;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--light-gray);
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+}
+
+#store-search .btn {
+    padding: 0.75rem 1.5rem;
+}
+
+
+#store-filters {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+#store-filters h3 {
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+
+.filter-group h4 {
+    margin-bottom: 0.5rem;
+    color: var(--gray-color);
+}
+
+.filter-group input[type="range"] {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.filter-group p {
+    color: var(--gray-color);
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+}
+
+.filter-group input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+#store-filters .btn {
+    width: 100%;
+}
+
+
+#store main .container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+}
+
+#store-search, #featured-products, #categories, #store-info {
+    grid-column: 2 / 3;
+}
+
+#store-filters {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+}
+
+
+@media (max-width: 768px) {
+    #store main .container {
+        grid-template-columns: 1fr;
+    }
+
+    #store-search, #featured-products, #categories, #store-info, #store-filters {
+        grid-column: 1 / 2;
+    }
+
+    #store-filters {
+        grid-row: auto;
+    }
+
+    .testimonial-container, .pricing-container {
+        grid-template-columns: 1fr;
+    }
+
+    .actions-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .actions-container .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .search-input {
+        margin-bottom: 1rem;
+        margin-right: 0;
+    }
+}
+
+.setup-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--light-gray);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: var(--font-main);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input[type="file"] {
+    padding: 0.5rem 0;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(78, 115, 223, 0.3);
+}
+    </style>
+</head>
+<body>
+   
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
+            <li><a href="#" onclick="showPage('dashboard'); return false;">Dashboard</a></li>
+            <li><a href="#" onclick="showPage('store'); return false;">Store Preview</a></li>
+        </ul>
+    </nav>
+
+    
+    <div id="home" class="page active">
+        <div class="container">
+            <header>
+                <h1>ShopEasy - Grow Your Small Business Online</h1>
+            </header>
+
+            <main>
+                <section id="hero">
+                    <h2>The easiest way to set up and manage your online store</h2>
+                    <p>ShopEasy helps small business owners create and manage their online presence with minimal effort.</p>
+                    <div class="cta-buttons">
+                        <a href="#" onclick="showPage('dashboard'); return false;" class="btn btn-secondary">Get Started</a>
+                        <a href="#" onclick="showPage('dashboard'); return false;" class="btn btn-primary">Login</a>
+                    </div>
+                </section>
+
+                <section id="features">
+                    <h2>Features</h2>
+                    <div class="feature-cards">
+                        <div class="feature">
+                            <h3>Easy Store Setup</h3>
+                            <p>Set up your online store in minutes with our intuitive interface.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Product Management</h3>
+                            <p>Easily add, edit, and organize your products.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Basic Analytics</h3>
+                            <p>Track your store's performance with our simple analytics dashboard.</p>
+                        </div>
+                    </div>
+                </section>
+                
+<section id="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-container">
+        <div class="testimonial">
+            <p>"ShopEasy made setting up my online store a breeze! Highly recommend!"</p>
+            <p class="author">- Jane Doe, Small Business Owner</p>
+        </div>
+        <div class="testimonial">
+            <p>"The analytics dashboard helps me track my sales effortlessly."</p>
+            <p class="author">- John Smith, Entrepreneur</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="pricing">
+    <h2>Pricing Plans</h2>
+    <div class="pricing-container">
+        <div class="plan">
+            <h3>Basic</h3>
+            <p class="price">$9.99/month</p>
+            <ul>
+                <li>Up to 50 Products</li>
+                <li>Basic Analytics</li>
+                <li>Email Support</li>
+            </ul>
+            <button class="btn">Choose Plan</button>
+        </div>
+        <div class="plan">
+            <h3>Pro</h3>
+            <p class="price">$19.99/month</p>
+            <ul>
+                <li>Unlimited Products</li>
+                <li>Advanced Analytics</li>
+                <li>Priority Support</li>
+            </ul>
+            <button class="btn">Choose Plan</button>
+        </div>
+    </div>
+</section>
+
+
+<section id="order-management">
+    <h2>Recent Orders</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Total</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>#1001</td>
+                <td>Jane Doe</td>
+                <td>$29.99</td>
+                <td>Pending</td>
+            </tr>
+            <tr>
+                <td>#1002</td>
+                <td>John Smith</td>
+                <td>$49.99</td>
+                <td>Shipped</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+<section id="quick-actions">
+    <h2>Quick Actions</h2>
+    <div class="actions-container">
+        <button class="btn btn-primary">Add Product</button>
+        <button class="btn btn-secondary">View Reports</button>
+        <button class="btn btn-primary">Manage Orders</button>
+    </div>
+</section>
+
+
+<section id="store-search">
+    <input type="text" placeholder="Search products..." class="search-input">
+    <button class="btn btn-primary">Search</button>
+</section>
+
+
+<aside id="store-filters">
+    <h3>Filters</h3>
+    <div class="filter-group">
+        <h4>Price Range</h4>
+        <input type="range" min="0" max="100" value="50">
+        <p>$0 - $100</p>
+    </div>
+    <div class="filter-group">
+        <h4>Categories</h4>
+        <label><input type="checkbox" name="category" value="cat1"> Category 1</label>
+        <label><input type="checkbox" name="category" value="cat2"> Category 2</label>
+        <label><input type="checkbox" name="category" value="cat3"> Category 3</label>
+    </div>
+    <button class="btn btn-secondary">Apply Filters</button>
+</aside>
+            </main>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 ShopEasy. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </nav>
+        </footer>
+    </div>
+
+    
+    <div id="dashboard" class="page">
+        <div class="container">
+            <header>
+                <h1>ShopEasy Dashboard</h1>
+            </header>
+
+            <main>
+                <section id="welcome">
+                    <h2>Welcome, [User]!</h2>
+                    <p>Manage your online store using the tools below.</p>
+                </section>
+
+                <section id="store-setup">
+                    <h2>Store Setup</h2>
+                    <form id="store-setup-form" class="setup-form">
+                        <div class="form-group">
+                            <label for="store-name">Store Name</label>
+                            <input type="text" id="store-name" name="store-name" placeholder="Enter your store name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="store-description">Store Description</label>
+                            <textarea id="store-description" name="store-description" placeholder="Describe your store" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="store-logo">Logo Upload</label>
+                            <input type="file" id="store-logo" name="store-logo" accept="image/*">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Store Settings</button>
+                    </form>
+                </section>
+
+                <section id="product-list">
+                    <h2>Product List</h2>
+                    <div class="product-controls">
+                        <button id="add-product-btn" class="btn btn-secondary">Add New Product</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Empty for now, will be populated with JavaScript later -->
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="analytics">
+                    <h2>Analytics</h2>
+                    <div class="analytics-container">
+                        <div class="chart-placeholder">
+                            <!-- This will contain charts in the future -->
+                            <p>Sales overview chart will appear here</p>
+                        </div>
+                        <div class="stats-placeholder">
+                            <div class="stat-box">
+                                <h3>Total Sales</h3>
+                                <p>$0.00</p>
+                            </div>
+                            <div class="stat-box">
+                                <h3>Products Sold</h3>
+                                <p>0</p>
+                            </div>
+                            <div class="stat-box">
+                                <h3>Store Views</h3>
+                                <p>0</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 ShopEasy. All rights reserved.</p>
+            <div>
+                <a href="#" onclick="showPage('home'); return false;">Logout</a>
+            </div>
+        </footer>
+    </div>
+
+    
+    <div id="store" class="page">
+        <header id="store-header">
+            <div id="store-branding">
+                <h1>[Business Name] Store</h1>
+                <p>Your store description will appear here</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div id="store-cart">
+                <span>Cart (0)</span>
+            </div>
+        </header>
+        
+        <main>
+            <div class="container">
+                <section id="featured-products">
+                    <h2>Featured Products</h2>
+                    <div class="product-grid">
+                        <!-- Empty product grid placeholders -->
+                        <div class="product-card">
+                            <div class="product-image-placeholder"></div>
+                            <h3>Product Name</h3>
+                            <p class="price">$0.00</p>
+                            <div class="add-to-cart-button">Add to Cart</div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image-placeholder"></div>
+                            <h3>Product Name</h3>
+                            <p class="price">$0.00</p>
+                            <div class="add-to-cart-button">Add to Cart</div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image-placeholder"></div>
+                            <h3>Product Name</h3>
+                            <p class="price">$0.00</p>
+                            <div class="add-to-cart-button">Add to Cart</div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image-placeholder"></div>
+                            <h3>Product Name</h3>
+                            <p class="price">$0.00</p>
+                            <div class="add-to-cart-button">Add to Cart</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="categories">
+                    <h2>Shop by Category</h2>
+                    <div class="category-list">
+                        <div class="category">Category 1</div>
+                        <div class="category">Category 2</div>
+                        <div class="category">Category 3</div>
+                    </div>
+                </section>
+                
+                <section id="store-info">
+                    <h2>About Our Store</h2>
+                    <p>This is where your store description and information will be displayed.</p>
+                </section>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@example.com</p>
+                    <p>Phone: (123) 456-7890</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <span>Facebook</span>
+                        <span>Instagram</span>
+                        <span>Twitter</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Store Hours</h3>
+                    <p>Monday-Friday: 9am-5pm</p>
+                    <p>Saturday: 10am-4pm</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="store-footer-bottom">
+                <p>&copy; 2025 [Business Name]. All rights reserved. Powered by ShopEasy.</p>
+                <a href="#" onclick="showPage('dashboard'); return false;">Back to Dashboard</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript for navigation -->
+    <script>
+        // Cart object to store items
+        let cart = {
+            items: [],
+            total: 0
+        };
+    
+        // Sample products array
+        const products = [
+            { id: 1, name: "Product 1", price: 29.99, stock: 10 },
+            { id: 2, name: "Product 2", price: 39.99, stock: 15 },
+            { id: 3, name: "Product 3", price: 19.99, stock: 20 },
+            { id: 4, name: "Product 4", price: 49.99, stock: 8 }
+        ];
+    
+        // Sample orders array (for the new order management section)
+        const orders = [
+            { id: "#1001", customer: "Jane Doe", total: 29.99, status: "Pending" },
+            { id: "#1002", customer: "John Smith", total: 49.99, status: "Shipped" }
+        ];
+    
+        // Store settings object
+        let storeSettings = {
+            name: "My Store",
+            description: "Welcome to my online store!",
+            logo: null
+        };
+    
+        // Page navigation
+        function showPage(pageId) {
+            const pages = document.getElementsByClassName('page');
+            for (let i = 0; i < pages.length; i++) {
+                pages[i].classList.remove('active');
+            }
+            document.getElementById(pageId).classList.add('active');
+            
+            if (pageId === 'store') {
+                updateStorePage();
+            } else if (pageId === 'dashboard') {
+                updateDashboard();
+            }
+        }
+    
+        // Update store page with products
+        function updateStorePage() {
+            const productGrid = document.querySelector('#featured-products .product-grid');
+            productGrid.innerHTML = '';
+            
+            let filteredProducts = products;
+            
+            // Apply search filter
+            const searchInput = document.querySelector('.search-input')?.value.toLowerCase() || '';
+            if (searchInput) {
+                filteredProducts = products.filter(product =>
+                    product.name.toLowerCase().includes(searchInput)
+                );
+            }
+    
+            // Apply category filter
+            const selectedCategories = Array.from(document.querySelectorAll('#store-filters input[name="category"]:checked'))
+                .map(checkbox => checkbox.value);
+            if (selectedCategories.length > 0) {
+                filteredProducts = filteredProducts.filter(product =>
+                    selectedCategories.includes(`cat${product.id % 3 + 1}`) // Simulated category mapping
+                );
+            }
+    
+            // Apply price filter
+            const priceRange = document.querySelector('#store-filters input[type="range"]')?.value || 100;
+            filteredProducts = filteredProducts.filter(product => product.price <= priceRange);
+    
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image-placeholder"></div>
+                    <h3>${product.name}</h3>
+                    <p class="price">$${product.price.toFixed(2)}</p>
+                    <div class="add-to-cart-button" onclick="addToCart(${product.id})">
+                        ${product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
+                    </div>
+                `;
+                productGrid.appendChild(productCard);
+            });
+            
+            updateCartDisplay();
+        }
+    
+        // Update dashboard
+        function updateDashboard() {
+            // Update product list
+            const tbody = document.querySelector('#product-list tbody');
+            tbody.innerHTML = '';
+            products.forEach(product => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${product.name}</td>
+                    <td>$${product.price.toFixed(2)}</td>
+                    <td>${product.stock}</td>
+                    <td>
+                        <button class="btn btn-primary" onclick="editProduct(${product.id})">Edit</button>
+                        <button class="btn btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+    
+            // Update order management
+            const orderTbody = document.querySelector('#order-management tbody');
+            orderTbody.innerHTML = '';
+            orders.forEach(order => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${order.id}</td>
+                    <td>${order.customer}</td>
+                    <td>$${order.total.toFixed(2)}</td>
+                    <td>${order.status}</td>
+                `;
+                orderTbody.appendChild(row);
+            });
+    
+            // Update store branding in store preview
+            document.querySelector('#store-branding h1').textContent = storeSettings.name + " Store";
+            document.querySelector('#store-branding p').textContent = storeSettings.description;
+        }
+    
+        // Add to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product || product.stock <= 0) return;
+    
+            const cartItem = cart.items.find(item => item.id === productId);
+            if (cartItem) {
+                cartItem.quantity++;
+            } else {
+                cart.items.push({
+                    id: productId,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1
+                });
+            }
+            
+            product.stock--;
+            cart.total += product.price;
+            updateCartDisplay();
+            updateStorePage();
+            updateDashboard();
+        }
+    
+        // Update cart display
+        function updateCartDisplay() {
+            const cartElement = document.getElementById('store-cart');
+            const itemCount = cart.items.reduce((sum, item) => sum + item.quantity, 0);
+            cartElement.innerHTML = `Cart (${itemCount}) - $${cart.total.toFixed(2)}`;
+        }
+    
+        // Edit product
+        function editProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                const newName = prompt('Enter new product name:', product.name);
+                const newPrice = parseFloat(prompt('Enter new price:', product.price));
+                const newStock = parseInt(prompt('Enter new stock:', product.stock));
+                
+                if (newName) product.name = newName;
+                if (!isNaN(newPrice)) product.price = newPrice;
+                if (!isNaN(newStock)) product.stock = newStock;
+                
+                updateDashboard();
+                updateStorePage();
+            }
+        }
+    
+        // Delete product
+        function deleteProduct(productId) {
+            const index = products.findIndex(p => p.id === productId);
+            if (index !== -1 && confirm('Are you sure you want to delete this product?')) {
+                products.splice(index, 1);
+                cart.items = cart.items.filter(item => item.id !== productId);
+                updateDashboard();
+                updateStorePage();
+                updateCartDisplay();
+            }
+        }
+    
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home');
+    
+            // Store setup form submission
+            const storeSetupForm = document.getElementById('store-setup-form');
+            if (storeSetupForm) {
+                storeSetupForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    storeSettings.name = document.getElementById('store-name').value;
+                    storeSettings.description = document.getElementById('store-description').value;
+                    const logoFile = document.getElementById('store-logo').files[0];
+                    if (logoFile) {
+                        storeSettings.logo = URL.createObjectURL(logoFile);
+                    }
+                    alert('Store settings saved!');
+                    updateDashboard();
+                });
+            }
+    
+            // Add new product button
+            const addProductBtn = document.getElementById('add-product-btn');
+            if (addProductBtn) {
+                addProductBtn.addEventListener('click', () => {
+                    const newProduct = {
+                        id: products.length + 1,
+                        name: `Product ${products.length + 1}`,
+                        price: 29.99,
+                        stock: 10
+                    };
+                    products.push(newProduct);
+                    updateDashboard();
+                });
+            }
+    
+            // Category click handlers
+            document.querySelectorAll('.category').forEach(category => {
+                category.addEventListener('click', () => {
+                    alert(`Filtering by ${category.textContent} (Functionality to be implemented)`);
+                });
+            });
+    
+            // Pricing plan buttons
+            document.querySelectorAll('#pricing .btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const plan = button.parentElement.querySelector('h3').textContent;
+                    alert(`You selected the ${plan} plan! (Functionality to be implemented)`);
+                });
+            });
+    
+            // Quick actions buttons
+            document.querySelectorAll('#quick-actions .btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const action = button.textContent;
+                    if (action === 'Add Product') {
+                        document.getElementById('add-product-btn').click();
+                    } else if (action === 'View Reports') {
+                        alert('View Reports functionality to be implemented');
+                    } else if (action === 'Manage Orders') {
+                        alert('Manage Orders functionality to be implemented');
+                    }
+                });
+            });
+    
+            // Search functionality
+            document.querySelector('#store-search .btn')?.addEventListener('click', () => {
+                updateStorePage();
+            });
+    
+            // Filter functionality
+            document.querySelector('#store-filters .btn')?.addEventListener('click', () => {
+                updateStorePage();
+            });
+    
+            // Update price range display
+            const priceRange = document.querySelector('#store-filters input[type="range"]');
+            if (priceRange) {
+                priceRange.addEventListener('input', () => {
+                    const priceDisplay = priceRange.nextElementSibling;
+                    priceDisplay.textContent = `$0 - $${priceRange.value}`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
